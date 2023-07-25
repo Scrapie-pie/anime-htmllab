@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <title>Document</title>
+
+  <style>
+    .el {
+        background: red;
+        width: 50px;
+        height: 50px;
+        margin: 3px;
+    }
+  </style>
+
+</head>
+<body>
+  <button id="btn-start">Пуск</button>
+  <div class="el el1"></div>
+  <div class="el el2"></div>
+  <div class="el el3"></div>
+  <div class="el el4"></div>
+  <pre id="result"></pre>
+
+  <script>
+    const btnStart = document.querySelector('#btn-start')
+    let phone = {
+      price: 10000
+    }
+
+    btnStart.addEventListener('click', (e) => {
+      anime({
+        targets: [
+          '.el',
+          phone
+        ],
+        translateX: 350,
+        price: 200000,
+        update: () => {
+          document.querySelector('#result').innerHTML = phone.price
+        }
+      })
+    })
+
+
+
+
+  </script>
+
+</body>
+</html>
