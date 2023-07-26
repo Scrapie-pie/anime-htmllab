@@ -10,7 +10,7 @@
 
   <style>
     .el {
-        background: red;
+        background: #000;
         width: 50px;
         height: 50px;
         margin: 3px;
@@ -33,15 +33,26 @@
     btnStart.addEventListener('click', (e) => {
       anime({
         targets: '.el',
-        background: '#885588',
+        background: ['#655335', '#000888'],
         opacity: .5,
-        translateX: {
-          value: 350,
-          duration: 500
+        width: '7%',
+        translateX: () => {
+          return anime.random(0, 400)
         },
-        translateY: (el, i, l) => i * 10,
-        scale: (el, i, l) => (i + 1) * 1.02,
-        delay: (el, i, l) => i * 100,
+        translateY: (el, i, l) => {
+          return anime.random(0, 400)
+        },
+        rotate: (el, i, l) => {
+          return 15 * i
+        },
+        scale: {
+          value: '*=2',
+          duration: 1000,
+          easing: 'easeInOutSine'
+        },
+        delay: (el, i, l) => {
+          return i * 100
+        },
         direction: 'alternate',
         endDelay: 500,
         duration: 1000,
