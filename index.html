@@ -21,13 +21,6 @@
 <body>
   <button id="btn-start">Пуск</button>
 
-  <div class="row"><input type="text" name="input1"></div>
-  <div class="row"><input type="color" name="input2"></div>
-
-  <svg viewbox="0 0 100 100" width="150" height="150">
-    <polygon class="poly" points="50 0, 100 100, 0 100, 0 100, 0 100, 0 100, 0 100, 0 100"></polygon>
-  </svg>
-
   <div class="el el1"></div>
   <div class="el el2"></div>
   <div class="el el3"></div>
@@ -36,70 +29,24 @@
 
   <script>
     const btnStart = document.querySelector('#btn-start')
-    const input1 = document.querySelector('[name=input1]')
-    const input2 = document.querySelector('[name=input2]')
-
-
-
-    let phone = {
-      price: 10000
-    }
 
     btnStart.addEventListener('click', (e) => {
-
       anime({
-        targets: '.poly',
-        points: [
-          {value: "50 0, 100 50, 50 100, 0 50, 0 50, 0 50, 0 50, 0 50", endDelay: 100},
-          {value: "50.0 0.0, 100.0 41.25, 80.16 100.0, 19.83 100.0, 0.0 41.25, 0.0 41.25, 0.0 41.25, 0.0 41.25", endDelay: 100},
-          {value: "50.0 0.0, 100.0 25.0, 100.0 75.0, 50.0 100.0, 0.0 75.0, 0.0 25.0, 0.0 25.0, 0.0 25.0", endDelay: 100},
-          {value: "50.0 0.0, 90.20 20.0, 100.0 64.21, 72.16 100.0, 27.83 100.0, 0 64.21, 9.79 20.0, 9.79 20.0", endDelay: 100},
-          {value: "50.0 0.0, 85.0 15.0, 100.0 50.0, 85.0 85.0, 50.0 100.0, 15.0 85.0, 0.0 50.0, 15.0 15.0", endDelay: 100},
-        ],
-        duration: 4000,
-        loop: true,
-        direction: 'alternate',
-        easing: 'linear',
-        delay: 300,
-      });
-
-
-      anime({
-        targets: input1,
-        value: [0, 1000],
-        round: 1,
-        easing: 'easeInOutExpo'
-      })
-      anime({
-        targets: input2,
-        value: ['#124480', '#5fffff'],
-        round: 1,
-        easing: 'easeInOutExpo'
-      })
-
-
-
-      anime({
-        targets: [
-          '.el',
-          phone
-        ],
-
-        background: '#888111',
+        targets: '.el',
+        background: '#885588',
         opacity: .5,
-        translateX: 350,
-        price: 200000,
-        round: 1,
-
-        update: () => {
-          document.querySelector('#result').innerHTML = phone.price
-        }
+        translateX: {
+          value: 350,
+          duration: 500
+        },
+        translateY: (el, i, l) => i * 10,
+        scale: (el, i, l) => (i + 1) * 1.02,
+        delay: (el, i, l) => i * 100,
+        direction: 'alternate',
+        endDelay: 500,
+        duration: 1000,
       })
     })
-
-
-
-
   </script>
 
 </body>
